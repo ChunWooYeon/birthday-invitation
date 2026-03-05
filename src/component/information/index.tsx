@@ -1,9 +1,7 @@
 ﻿import { GROOM_INFO } from "../../const"
-import { STATIC_ONLY } from "../../env"
 import { Button } from "../button"
 import { LazyDiv } from "../lazyDiv"
 import { useModal } from "../modal"
-import { AttendanceInfo } from "./attendance"
 
 export const Information1 = () => {
   return (
@@ -96,24 +94,14 @@ export const Information2 = () => {
 }
 
 export const Information = () => {
-  if (STATIC_ONLY) {
-    return (
-      <>
-        <LazyDiv className="card information">
-          <Information1 />
-        </LazyDiv>
-        <LazyDiv className="card information">
-          <Information2 />
-        </LazyDiv>
-      </>
-    )
-  }
-
   return (
-    <LazyDiv className="card information">
-      <Information1 />
-      <Information2 />
-      <AttendanceInfo />
-    </LazyDiv>
+    <>
+      <LazyDiv className="card information">
+        <Information1 />
+      </LazyDiv>
+      <LazyDiv className="card information">
+        <Information2 />
+      </LazyDiv>
+    </>
   )
 }
