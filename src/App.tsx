@@ -1,15 +1,15 @@
-import { Cover } from "./component/cover"
+﻿import { Cover } from "./component/cover"
 import { Location } from "./component/location"
 import "./App.scss"
 import { BGEffect } from "./component/bgEffect"
 import { Invitation } from "./component/invitation"
 import { Calendar } from "./component/calendar"
 import { Gallery } from "./component/gallery"
-import { Information } from "./component/information"
-import { GuestBook } from "./component/guestbook"
+// import { Information } from "./component/information"
+// import { GuestBook } from "./component/guestbook"
 import { LazyDiv } from "./component/lazyDiv"
 import { ShareButton } from "./component/shareButton"
-import { STATIC_ONLY } from "./env"
+// import { STATIC_ONLY } from "./env"
 
 function App() {
   return (
@@ -20,28 +20,28 @@ function App() {
           {/* 표지 */}
           <Cover />
 
-          {/* 모시는 글 */}
+          {/* 초대 글 */}
           <Invitation />
         </LazyDiv>
 
         <LazyDiv className="card-group">
-          {/* 결혼식 날짜 (달력) */}
+          {/* 날짜 (달력) */}
           <Calendar />
 
-          {/* 겔러리 */}
+          {/* 갤러리 */}
           <Gallery />
         </LazyDiv>
 
         <LazyDiv className="card-group">
-          {/* 오시는길 */}
+          {/* 위치 */}
           <Location />
         </LazyDiv>
 
         <LazyDiv className="card-group">
           {/* 마음 전하기 */}
-          <Information />
+          {/* <Information /> */}
           {/* 방명록 */}
-          {!STATIC_ONLY && <GuestBook />}
+          {/* {!STATIC_ONLY && <GuestBook />} */}
         </LazyDiv>
 
         <ShareButton />

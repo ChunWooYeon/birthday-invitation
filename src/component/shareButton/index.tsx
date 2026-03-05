@@ -1,11 +1,10 @@
-import {
-  BRIDE_FULLNAME,
+﻿import {
   GROOM_FULLNAME,
   LOCATION,
   SHARE_ADDRESS,
   SHARE_ADDRESS_TITLE,
-  WEDDING_DATE,
-  WEDDING_DATE_FORMAT,
+  BIRTHDAY_DATE,
+  BIRTHDAY_DATE_FORMAT,
 } from "../../const"
 import ktalkIcon from "../../icons/ktalk-icon.png"
 import { LazyDiv } from "../lazyDiv"
@@ -15,6 +14,7 @@ const baseUrl = import.meta.env.BASE_URL
 
 export const ShareButton = () => {
   const kakao = useKakao()
+
   return (
     <LazyDiv className="footer share-button">
       <button
@@ -29,9 +29,9 @@ export const ShareButton = () => {
             address: SHARE_ADDRESS,
             addressTitle: SHARE_ADDRESS_TITLE,
             content: {
-              title: `${GROOM_FULLNAME} ❤️ ${BRIDE_FULLNAME}의 결혼식에 초대합니다.`,
+              title: `${GROOM_FULLNAME}의 생일잔치에 초대합니다🤍`,
               description:
-                WEDDING_DATE.format(WEDDING_DATE_FORMAT) + "\n" + LOCATION,
+                BIRTHDAY_DATE.format(BIRTHDAY_DATE_FORMAT) + "\n" + LOCATION,
               imageUrl:
                 window.location.protocol +
                 "//" +

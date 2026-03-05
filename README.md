@@ -1,8 +1,8 @@
-# 모바일 청첩장 템플릿 | Wedding Invitation Template
+﻿# 모바일 청첩장 템플릿 | Wedding Invitation Template
 
 ## 원본 버전 | Original Version
 
-남주호 ❤️ 정지원 청첩장입니다.
+신랑 ❤️ 신부 청첩장입니다.
 
 https://juhonamnam.github.io/wedding-invitation
 
@@ -14,10 +14,10 @@ React로 제작된 모던한 모바일 청첩장 웹사이트 템플릿입니다
 
 ## 주요 기능
 
-- 📱 반응형 디자인 - 모바일과 데스크톱 모두 지원
+- 📱 반응형 디자인 - 모바일과 데스크톱 모두 호환
 - ✨ 깔끔하고 모던한 UI
 - 🚀 GitHub Pages 간편 배포
-- 다양한 기능 지원
+- 다양한 기능 제공
   - 🎞️ 이미지 갤러리
   - 🗺️ 웨딩홀 위치 지도 표시
   - 💌 방명록

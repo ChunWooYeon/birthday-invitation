@@ -1,28 +1,26 @@
-import { useEffect, useMemo, useState } from "react"
+﻿import { useEffect, useMemo, useState } from "react"
 import {
-  BRIDE_FIRSTNAME,
   GROOM_FIRSTNAME,
   HOLIDAYS,
-  WEDDING_DATE,
-  WEDDING_DATE_FORMAT,
+  BIRTHDAY_DATE,
+  BIRTHDAY_DATE_FORMAT,
 } from "../../const"
 import { LazyDiv } from "../lazyDiv"
 
-const firstDayOfWeek = WEDDING_DATE.startOf("month").day()
-const daysInMonth = WEDDING_DATE.daysInMonth()
+const firstDayOfWeek = BIRTHDAY_DATE.startOf("month").day()
+const daysInMonth = BIRTHDAY_DATE.daysInMonth()
 
 export const Calendar = () => {
-  const [tsDiff, setTsDiff] = useState(WEDDING_DATE.diff())
+  const [tsDiff, setTsDiff] = useState(BIRTHDAY_DATE.diff())
 
   const dayDiff = useMemo(() => {
-    const dayOffset = WEDDING_DATE.diff(WEDDING_DATE.startOf("day"))
+    const dayOffset = BIRTHDAY_DATE.diff(BIRTHDAY_DATE.startOf("day"))
     return Math.ceil((tsDiff - dayOffset) / 1000 / 60 / 60 / 24)
   }, [tsDiff])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const diff = WEDDING_DATE.diff()
-
+      const diff = BIRTHDAY_DATE.diff()
       setTsDiff(diff)
     }, 1000)
 
@@ -35,16 +33,15 @@ export const Calendar = () => {
     const minutes = Math.floor((tsDiff_ % 3600000) / 60000)
     const hours = Math.floor((tsDiff_ % 86400000) / 3600000)
     const days = Math.floor(tsDiff_ / 86400000)
-    const isAfter = tsDiff < 0
 
-    return { days, hours, minutes, seconds, isAfter }
+    return { days, hours, minutes, seconds }
   }, [tsDiff])
 
   return (
     <LazyDiv className="card calendar">
-      <h2 className="english">The Wedding Day</h2>
+      <h2 className="english">The Birthday Day</h2>
       <div className="break" />
-      {WEDDING_DATE.format(WEDDING_DATE_FORMAT)}
+      {BIRTHDAY_DATE.format(BIRTHDAY_DATE_FORMAT)}
       <div className="calendar-wrapper">
         <div className="head holiday">
           <span>Su</span>
@@ -72,18 +69,16 @@ export const Calendar = () => {
         ))}
         {Array.from({ length: daysInMonth }).map((_, i) => {
           const date = i + 1
-
           const classes = []
-
           const isSunday = (i + firstDayOfWeek) % 7 === 0
 
           if (isSunday || HOLIDAYS.includes(date)) {
             classes.push("holiday")
           }
 
-          const isWeddingDate = date === WEDDING_DATE.date()
+          const isBirthdayDate = date === BIRTHDAY_DATE.date()
 
-          if (isWeddingDate) {
+          if (isBirthdayDate) {
             classes.push("wedding-date")
           }
 
@@ -93,7 +88,7 @@ export const Calendar = () => {
               className={classes.length ? classes.join(" ") : undefined}
             >
               <span>{date}</span>
-              {isWeddingDate && <div className="heart" />}
+              {isBirthdayDate && <div className="heart" />}
             </div>
           )
         })}
@@ -116,7 +111,7 @@ export const Calendar = () => {
           <div className="count">{diffs.seconds}</div>
         </div>
         <div className="message">
-          {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}의 결혼식이{" "}
+          {GROOM_FIRSTNAME}의 생일이{" "}
           {dayDiff > 0 ? (
             <>
               <span className="d-day">{dayDiff}</span>일 남았습니다.

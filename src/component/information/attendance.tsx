@@ -1,10 +1,9 @@
-import {
-  BRIDE_FULLNAME,
+﻿import {
   dayjs,
   GROOM_FULLNAME,
   LOCATION,
-  WEDDING_DATE,
-  WEDDING_DATE_FORMAT,
+  BIRTHDAY_DATE,
+  BIRTHDAY_DATE_FORMAT,
 } from "../../const"
 import { Button } from "../button"
 import { useModal } from "../modal"
@@ -26,16 +25,14 @@ const RULES = {
 
 export const AttendanceInfo = () => {
   const { openModal, closeModal } = useModal()
-
   const initialized = useRef(false)
-
   const now = useRef(dayjs())
 
   useEffect(() => {
     if (initialized.current) return
     initialized.current = true
 
-    if (!SERVER_URL || WEDDING_DATE.isBefore(now.current)) return
+    if (!SERVER_URL || BIRTHDAY_DATE.isBefore(now.current)) return
 
     openModal({
       className: "attendance-info-modal",
@@ -43,9 +40,9 @@ export const AttendanceInfo = () => {
       content: (
         <>
           <div className="info-message">
-            축하의 마음으로 참석해주시는
+            축하하는 마음으로 참석해주시는
             <br />
-            모든 분들을 귀하게 모실 수 있도록
+            모든 분들을 고마운 마음으로 모실 수 있도록
             <br />
             참석 및 식사 여부를 미리 여쭙고자 합니다.
             <div className="break" />
@@ -54,9 +51,9 @@ export const AttendanceInfo = () => {
             정성껏 준비하겠습니다.
           </div>
           <div className="wedding-info">
-            <HeartIcon /> 신랑 {GROOM_FULLNAME} & 신부 {BRIDE_FULLNAME}
+            <HeartIcon /> {GROOM_FULLNAME}
             <br />
-            <CalendarIcon /> {WEDDING_DATE.format(WEDDING_DATE_FORMAT)}
+            <CalendarIcon /> {BIRTHDAY_DATE.format(BIRTHDAY_DATE_FORMAT)}
             <br />
             <MarkerIcon /> {LOCATION}
           </div>
@@ -85,15 +82,15 @@ export const AttendanceInfo = () => {
     })
   }, [openModal, closeModal])
 
-  if (!SERVER_URL || WEDDING_DATE.isBefore(now.current)) return null
+  if (!SERVER_URL || BIRTHDAY_DATE.isBefore(now.current)) return null
 
   return (
     <div className="info-card">
       <div className="label">참석 의사 전달</div>
       <div className="content">
-        신랑, 신부에게 참석의사를
+        참석 의사를
         <br />
-        미리 전달할 수 있어요.
+        미리 전달해 주세요.
       </div>
 
       <div className="break" />
@@ -112,11 +109,9 @@ export const AttendanceInfo = () => {
 
 const AttendanceModalContent = () => {
   const { closeModal } = useModal()
-  const inputRef = useRef({ side: {}, meal: {} }) as React.RefObject<{
-    side: {
-      groom: HTMLInputElement
-      bride: HTMLInputElement
-    }
+  const inputRef = useRef({
+    meal: {},
+  }) as React.RefObject<{
     name: HTMLInputElement
     meal: {
       yes: HTMLInputElement
@@ -134,12 +129,9 @@ const AttendanceModalContent = () => {
       onSubmit={async (e) => {
         e.preventDefault()
         setLoading(true)
+
         try {
-          const side = inputRef.current.side.groom.checked
-            ? "groom"
-            : inputRef.current.side.bride
-              ? "bride"
-              : null
+          const side = "groom"
           const name = inputRef.current.name.value
           const meal = inputRef.current.meal.yes.checked
             ? "yes"
@@ -150,31 +142,24 @@ const AttendanceModalContent = () => {
                 : null
           const count = Number(inputRef.current.count.value)
 
-          if (!side) {
-            alert("신랑 또는 신부를 선택해주세요.")
-            return
-          }
-
           if (!name) {
             alert("성함을 입력해주세요.")
             return
           }
           if (name.length > RULES.name.maxLength) {
-            alert(`성함을 ${RULES.name.maxLength}자 이하로 입력해주세요.`)
+            alert(`성함은 ${RULES.name.maxLength}자 이하로 입력해주세요.`)
             return
           }
-
           if (!meal) {
             alert("식사 여부를 선택해주세요.")
             return
           }
-
           if (isNaN(count)) {
             alert("참석 인원을 입력해주세요.")
             return
           }
           if (count < RULES.count.min) {
-            alert(`참석 인원을 ${RULES.count.min}명 이상으로 입력해주세요.`)
+            alert(`참석 인원은 ${RULES.count.min}명 이상으로 입력해주세요.`)
             return
           }
 
@@ -185,6 +170,7 @@ const AttendanceModalContent = () => {
             },
             body: JSON.stringify({ side, name, meal, count }),
           })
+
           if (!res.ok) {
             throw new Error(res.statusText)
           }
@@ -198,40 +184,6 @@ const AttendanceModalContent = () => {
         }
       }}
     >
-      <div className="input-group">
-        <div className="label">구분</div>
-        <div className="select-input">
-          <label>
-            <input
-              disabled={loading}
-              type="radio"
-              name="side"
-              value="groom"
-              hidden
-              defaultChecked
-              ref={(ref) => {
-                inputRef.current.side.groom = ref as HTMLInputElement
-              }}
-            />
-            <span>신랑</span>
-          </label>
-
-          <label>
-            <input
-              disabled={loading}
-              type="radio"
-              name="side"
-              value="bride"
-              hidden
-              ref={(ref) => {
-                inputRef.current.side.bride = ref as HTMLInputElement
-              }}
-            />
-            <span>신부</span>
-          </label>
-        </div>
-      </div>
-
       <div className="input-group">
         <div className="label">성함</div>
         <div className="input">
@@ -309,8 +261,10 @@ const AttendanceModalContent = () => {
     </form>
   )
 }
+
 const AttendanceModalFooter = () => {
   const { closeModal } = useModal()
+
   return (
     <>
       <Button buttonStyle="style2" type="submit" form="attendance-form">
