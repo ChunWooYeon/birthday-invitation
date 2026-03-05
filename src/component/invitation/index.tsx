@@ -30,7 +30,7 @@ export const Invitation = () => {
 
       <div className="break" />
 
-      <div className="content">싱그러운 여름 향기 가득한 날</div>
+      <div className="content">싱그러운 봄 향기 가득한 날</div>
       <div className="content">소중한 가족들과 함께</div>
       <div className="content">엄마 아빠의 사랑스런 아들</div>
       <div className="break" />
