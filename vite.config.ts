@@ -6,6 +6,7 @@ import fs from "fs"
 import pkg from "./package.json"
 import { createHtmlPlugin } from "vite-plugin-html"
 import {
+  GROOM_FIRSTNAME,
   GROOM_FULLNAME,
   BIRTHDAY_DATE,
   LOCATION,
@@ -31,6 +32,7 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         data: {
+          GROOM_FIRSTNAME,
           GROOM_FULLNAME,
           DESCRIPTION: `${BIRTHDAY_DATE.format(BIRTHDAY_DATE_FORMAT)} ${LOCATION}`,
         },

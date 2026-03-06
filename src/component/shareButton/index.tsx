@@ -29,7 +29,7 @@ export const ShareButton = () => {
             address: SHARE_ADDRESS,
             addressTitle: SHARE_ADDRESS_TITLE,
             content: {
-              title: `${GROOM_FULLNAME}의 생일잔치에 초대합니다🤍`,
+              title: `${GROOM_FULLNAME}의 생일잔치에 초대합니다.🤍`,
               description:
                 BIRTHDAY_DATE.format(BIRTHDAY_DATE_FORMAT) + "\n" + LOCATION,
               imageUrl:

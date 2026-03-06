@@ -34,7 +34,7 @@ export const Invitation = () => {
       <div className="content">소중한 가족들과 함께</div>
       <div className="content">엄마 아빠의 사랑스런 아들</div>
       <div className="break" />
-      <div className="content">♥️지호♥️의</div>
+      <div className="content">✨지호️의✨</div>
       <div className="content">첫번째 생일잔치를 하려고 해요.</div>
       <div className="break" />
       <div className="content">기쁜날 함께 하시어</div>

@@ -57,6 +57,8 @@ class Petal {
       }
     }
     this.ctx.globalAlpha = this.opacity
+    // Shift pink source petals toward yellow tones.
+    this.ctx.filter = "hue-rotate(95deg) saturate(1.25) brightness(1.05)"
     this.ctx.drawImage(
       this.petalImg,
       this.x,
@@ -64,6 +66,7 @@ class Petal {
       this.w * (0.6 + Math.abs(Math.cos(this.flip)) / 3),
       this.h * (0.8 + Math.abs(Math.sin(this.flip)) / 5),
     )
+    this.ctx.filter = "none"
   }
 
   animate() {
