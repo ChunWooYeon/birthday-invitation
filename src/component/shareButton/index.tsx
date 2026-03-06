@@ -29,7 +29,7 @@ export const ShareButton = () => {
             address: SHARE_ADDRESS,
             addressTitle: SHARE_ADDRESS_TITLE,
             content: {
-              title: `${GROOM_FULLNAME}의 생일잔치에 초대합니다.🤍`,
+              title: `${GROOM_FULLNAME}의 돌잔치에 초대합니다.🤍`,
               description:
                 BIRTHDAY_DATE.format(BIRTHDAY_DATE_FORMAT) + "\n" + LOCATION,
               imageUrl:
@@ -37,7 +37,7 @@ export const ShareButton = () => {
                 "//" +
                 window.location.host +
                 baseUrl +
-                "/preview_image.png",
+                "/kakao_preview_image.png",
               link: {
                 mobileWebUrl:
                   window.location.protocol +
@@ -71,7 +71,7 @@ export const ShareButton = () => {
           })
         }}
       >
-        <img src={ktalkIcon} alt="ktalk-icon" /> 카카오톡으로 공유하기
+        <> 💛 5월 23일에 만나요 💛</>
       </button>
     </LazyDiv>
   )

@@ -3,6 +3,7 @@ import CarIcon from "../../icons/car-icon.svg?react"
 import BusIcon from "../../icons/bus-icon.svg?react"
 import { LazyDiv } from "../lazyDiv"
 import { LOCATION, LOCATION_ADDRESS } from "../../const"
+import mapImg from "../../images/map.png"
 
 export const Location = () => {
   return (
@@ -13,7 +14,8 @@ export const Location = () => {
           {LOCATION}
           <div className="detail">{LOCATION_ADDRESS}</div>
         </div>
-        <Map />
+        {/*<Map />*/}
+        <img src={mapImg} alt="mapImg" />
       </LazyDiv>
       <LazyDiv className="card location">
         <div className="location-info">
