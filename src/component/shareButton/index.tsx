@@ -71,7 +71,7 @@ export const ShareButton = () => {
           })
         }}
       >
-        <> 💛 5월 23일에 만나요 💛</>
+        <> 💛 싱그러운 봄바람이 부는 5월 23일에 만나요 💛</>
       </button>
     </LazyDiv>
   )
