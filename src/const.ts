@@ -34,8 +34,8 @@ export const KMAP_PLACE_ID = 8634826
 export const GROOM_FULLNAME = "김지호"
 export const GROOM_FIRSTNAME = "지호"
 export const GROOM_TITLE = "아들"
-export const GROOM_FATHER = "김선욱"
-export const GROOM_MOTHER = "전우연"
+export const GROOM_FATHER = "지호 아빠"
+export const GROOM_MOTHER = "지호 엄마"
 export const GROOM_INFO = [
   {
     relation: "주인공",
