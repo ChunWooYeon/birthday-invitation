@@ -15,7 +15,7 @@ export const BIRTHDAY_DATE_FORMAT = `YYYY년 MMMM D일 dddd A h시${BIRTHDAY_DAT
 // 예식 당월 휴무일. 캘린더에 표시하기 위함.
 export const HOLIDAYS = [5,25]
 
-export const LOCATION = "노보텔 앰배서더 서울 동대문"
+export const LOCATION = "지호 돌잔치 장소🤍"
 export const LOCATION_ADDRESS = "서울 중구 을지로 238 노보텔 앰배서더 서울 동대문 19F 미팅룸"
 
 // 카카오톡 공유 시 위치 정보로 사용할 주소.
@@ -34,8 +34,8 @@ export const KMAP_PLACE_ID = 8634826
 export const GROOM_FULLNAME = "김지호"
 export const GROOM_FIRSTNAME = "지호"
 export const GROOM_TITLE = "아들"
-export const GROOM_FATHER = "김선욱"
-export const GROOM_MOTHER = "전우연"
+export const GROOM_FATHER = "지호 아빠"
+export const GROOM_MOTHER = "지호 엄마"
 export const GROOM_INFO = [
   {
     relation: "주인공",
